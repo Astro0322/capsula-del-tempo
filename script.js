@@ -154,8 +154,10 @@ function aggiornaCountdown() {
     const distanza = dataCompleanno - ora;
     const display = document.getElementById("countdown-display");
     
-    // Otteniamo la data di oggi in formato testuale YYYY-MM-DD
-    const oggiStr = new Date().toISOString().split('T')[0];
+        // Otteniamo la data di oggi in formato testuale YYYY-MM-DD (Ora Locale Italiana!)
+    const d1 = new Date();
+    const oggiStr = d1.getFullYear() + "-" + String(d1.getMonth() + 1).padStart(2, '0') + "-" + String(d1.getDate()).padStart(2, '0');
+
 
     // Se il compleanno è passato (Dal 25 Luglio in poi)
     if (oggiStr > '2026-07-24') {
@@ -182,7 +184,10 @@ const bottoneRegalo = document.getElementById("open-gift-btn");
 const testoMessaggio = document.getElementById("daily-message");
 
 bottoneRegalo.addEventListener("click", function() {
-    const oggi = new Date().toISOString().split('T')[0]; 
+    // Calcoliamo la data locale esatta al momento del click
+    const d2 = new Date();
+    const oggi = d2.getFullYear() + "-" + String(d2.getMonth() + 1).padStart(2, '0') + "-" + String(d2.getDate()).padStart(2, '0');
+
 
     // --- MODALITÀ ALBUM: se la data è dal 25 Luglio in poi ---
     if (oggi > '2026-07-24') {
