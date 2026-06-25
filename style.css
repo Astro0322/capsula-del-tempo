@@ -148,3 +148,26 @@ header {
     50% { transform: scale(1.05); box-shadow: 0 6px 25px rgba(255, 193, 7, 0.8); }
     100% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4); }
 }
+
+/* Stile e Animazione per i Cuoricini Volanti */
+.cuore-volante {
+    position: fixed;
+    pointer-events: none; /* Non intralcia altri click */
+    z-index: 10000; /* Sempre sopra tutto */
+    /* Colleghiamo l'animazione definita sotto: dura 1.5s, fluida in uscita */
+    animation: volaEsvanisci 1.5s ease-out forwards;
+}
+
+/* Definizione dell'animazione: cosa succede dallo 0% al 100% del tempo */
+@keyframes volaEsvanisci {
+    0% {
+        /* Stato iniziale: dove clicchi */
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        /* Stato finale: sale di 150px, si sposta di lato (drift casuale impostato da JS), si dimezza e ruota */
+        transform: translate(var(--drift-x), -150px) scale(0.5) rotate(45deg);
+        opacity: 0; /* Diventa trasparente */
+    }
+}

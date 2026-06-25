@@ -266,19 +266,68 @@ bottoneRegalo.addEventListener("click", function() {
     }
 });
 
-// --- EASTER EGG: 5 Click sul Titolo ---
-let contatoreClick = 0;
-const titoloSegreto = document.getElementById("main-title");
+document.addEventListener("DOMContentLoaded", () => {
+    let contatoreClick = 0;
+    let timerReset;
+    const titoloSegreto = document.getElementById("main-title");
 
-titoloSegreto.addEventListener("click", function() {
-    contatoreClick++;
-    if (contatoreClick === 5) {
-        alert("✨ Hai scoperto un segreto! Volevo solo ricordarti che ti amo da impazzire. Preparati perché quest'anno sarà speciale. ✨");
-        if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
-        contatoreClick = 0; 
+    if (titoloSegreto) {
+        titoloSegreto.style.cursor = "pointer"; // Fa apparire la manina del mouse
+
+        titoloSegreto.addEventListener("click", function() {
+            contatoreClick++;
+            
+            // 📢 Questo manderà un messaggio invisibile ma reale al PC!
+            console.log("🔥 Click registrato! Sei al numero: " + contatoreClick);
+            
+            clearTimeout(timerReset); 
+            
+            if (contatoreClick === 5) {
+                alert("Sei il cane mio, non pensavo fossi così intelligente da scoprire questo trucchetto, ma molto probabilmene te l'avrò detto io hihihihihih... MI MANCHI AMORE❤️❤️");
+                contatoreClick = 0; 
+            }
+            
+            // Se aspetti più di 4 secondi, si resetta
+            timerReset = setTimeout(() => { 
+                console.log("⏱️ Tempo scaduto! Il contatore è tornato a 0.");
+                contatoreClick = 0; 
+            }, 4000); 
+        });
     }
-    setTimeout(() => { contatoreClick = 0; }, 2000); 
 });
+
+// --- TRUCCHETTO EXTRA: Versione FLUIDA (CSS) dei Cuoricini Volanti al click ---
+const areaCountdown = document.getElementById("countdown-display");
+
+if (areaCountdown) {
+    areaCountdown.style.cursor = "pointer"; // Fa capire che si può cliccare
+    
+    areaCountdown.addEventListener("click", function(e) {
+        // Creiamo 6 cuoricini a ogni click
+        for (let i = 0; i < 6; i++) {
+            const cuore = document.createElement("div");
+            cuore.innerHTML = "❤️";
+            cuore.classList.add("cuore-volante"); // Collega la classe CSS con l'animazione
+            
+            // Posizione iniziale esatta del click
+            cuore.style.left = e.clientX + "px";
+            cuore.style.top = e.clientY + "px";
+            
+            // Grandezza casuale per varietà
+            cuore.style.fontSize = (Math.random() * 10 + 20) + "px"; 
+            
+            // Trucco Magico: Generiamo uno spostamento orizzontale CASUALE 
+            // e lo passiamo al CSS tramite una variabile (così ogni cuore va in una direzione diversa)
+            const spostamentoCasualeX = (Math.random() * 100 - 50) + "px"; // Tra -50px e +50px
+            cuore.style.setProperty('--drift-x', spostamentoCasualeX);
+
+            document.body.appendChild(cuore);
+            
+            // Rimuoviamo il cuore dal codice dopo che l'animazione CSS è finita (1.5s)
+            setTimeout(() => { cuore.remove(); }, 1500);
+        }
+    });
+}
 
 // Inizializza l'app
 aggiornaCountdown();
