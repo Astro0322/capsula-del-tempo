@@ -1,0 +1,150 @@
+/* 1. Reset di base per pulire i margini del browser */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* 2. Sfondo con la vostra foto sfocata e centrata */
+body {
+    margin: 0;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    overflow-x: hidden;
+    position: relative;
+    background-color: #0B1021; /* Colore di sicurezza se la foto ci mette un attimo a caricare */
+}
+
+/* Questo "trucco" crea lo sfondo sfocato indipendente dal testo */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/sfondo.jpg'); /* La vostra foto */
+    background-size: cover;
+    background-position: center;
+    
+    /* EFFETTO ROMANTICO: 10px di sfocatura e luminosità abbassata al 35% per far risaltare il testo */
+    filter: blur(10px) brightness(35%); 
+    
+    transform: scale(1.1); /* Evita che si vedano i bordi bianchi a causa della sfocatura */
+    z-index: -1; /* Spinge lo sfondo dietro a tutto il resto */
+}
+
+/* 3. Contenitore ottimizzato per le dimensioni di uno smartphone */
+.app-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px 20px;
+}
+
+/* 4. Titoli ed elementi di testo */
+header {
+    margin-bottom: 40px;
+}
+
+#main-title {
+    font-family: 'Dancing Script', cursive; /* Applica il nuovo font romantico */
+    font-size: 46px; /* Aumentato un po' perché i font corsivi sono più piccoli visivamente */
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #FCE4EC; /* Rosa tenue */
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Leggera ombra per renderlo più leggibile sulla foto */
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #A0AABF; /* Grigio-bluastro elegante */
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+/* 5. Il riquadro del conto alla rovescia */
+#countdown-section {
+    background: rgba(252, 228, 236, 0.05); /* Vetro con riflesso rosa tenue */
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(252, 228, 236, 0.15); /* Bordo rosato */
+}
+
+.countdown-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #A0AABF;
+}
+
+#countdown-display {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #FFFFFF;
+}
+
+/* 6. Il bottone del regalo */
+#open-gift-btn {
+    background-color: #FCE4EC;
+    color: #0B1021;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(252, 228, 236, 0.2); /* Leggero alone luminoso */
+}
+
+/* Effetto quando ci passi sopra o lo clicchi */
+#open-gift-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(252, 228, 236, 0.4);
+}
+#open-gift-btn:active {
+    transform: translateY(1px);
+}
+
+/* 7. Le classi per l'animazione di sblocco dei messaggi */
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(252, 228, 236, 0.08); /* Sfondo delicato */
+    border-left: 3px solid #FCE4EC; /* Linea decorativa laterale */
+    border-radius: 0 10px 10px 0;
+    font-style: italic;
+    line-height: 1.6;
+    transition: opacity 1s ease-in-out; /* Effetto fade-in morbido */
+}
+
+/* Effetto speciale per il giorno del compleanno */
+.giorno-speciale {
+    background: linear-gradient(45deg, #FCE4EC, #FFC107) !important;
+    color: #0B1021 !important;
+    animation: pulsazione 1.5s infinite;
+}
+
+@keyframes pulsazione {
+    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 6px 25px rgba(255, 193, 7, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4); }
+}
