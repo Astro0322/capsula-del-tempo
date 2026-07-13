@@ -144,7 +144,7 @@ const capsulaDelTempo = [
     {
         data: '2026-07-24', // Giorno 30 (IL COMPLEANNO!)
         messaggio: "🎉 BUON COMPLEANNO AMORE MIO! 🎉<br><br>Questo conto alla rovescia finisce qui, perchè il regalo più grande non poteva entrare nello schermo! <br><br><b>METTITI IL COSTUME, CHE TI ASPETTA UNA GIORNATA IN BARCA A PONZA AMOREEEE🛥️🌊</b><br><br>Spero che questa sorpresa ti tolga il fiato tanto quanto tu lo togli a me ogni giorno!!!",
-        immagine: "assets/sorpresa_montagna.jpg" // Metti la foto delle montagne o dello chalet!
+        immagine: "assets/IMG_0174.jpg" // Metti la foto delle montagne o dello chalet!
     }
 ];
 
